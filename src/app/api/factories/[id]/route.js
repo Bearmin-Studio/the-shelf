@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 import { FACTORY_SELECT_FIELDS } from '@/lib/supabase/queries';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request, { params }) {
   const { id } = await params;
   const supabase = createClient();

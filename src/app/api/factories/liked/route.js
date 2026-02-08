@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 import { FACTORY_SELECT_FIELDS } from '@/lib/supabase/queries';
 
+export const dynamic = 'force-dynamic';
+
 // ログインユーザーがいいねした工房一覧を取得
 export async function GET(request) {
   const supabase = createClient();

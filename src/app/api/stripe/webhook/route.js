@@ -2,6 +2,8 @@ import { stripe } from '@/lib/stripe';
 import { createClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // Webhook用のSupabaseクライアント（サービスロールキー使用）
 // ビルド時はキーが未設定の場合があるため遅延初期化
 function getSupabaseAdmin() {

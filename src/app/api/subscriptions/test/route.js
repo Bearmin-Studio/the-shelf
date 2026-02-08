@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // テスト用: 手動で購読を作成（開発環境のみ）
 export async function POST(request) {
   if (process.env.NODE_ENV === 'production') {

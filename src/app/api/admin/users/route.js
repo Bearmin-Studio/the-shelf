@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // 管理者チェック
 async function checkAdmin(supabase) {
   const { data: { user } } = await supabase.auth.getUser();

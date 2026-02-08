@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { stripe } from '@/lib/stripe';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // Checkoutセッションを検証して購読を作成（Webhook代替）
 export async function POST(request) {
   try {

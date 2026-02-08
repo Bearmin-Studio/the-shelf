@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // ユーザーアバターを更新
 export async function PATCH(request) {
   const supabase = createClient();

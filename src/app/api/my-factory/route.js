@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 import { FACTORY_SELECT_FIELDS } from '@/lib/supabase/queries';
 
+export const dynamic = 'force-dynamic';
+
 // 自分の工房を取得
 export async function GET() {
   const supabase = createClient();

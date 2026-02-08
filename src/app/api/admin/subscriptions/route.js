@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // 管理者: 全購読一覧取得
 export async function GET(request) {
   const supabase = createClient();

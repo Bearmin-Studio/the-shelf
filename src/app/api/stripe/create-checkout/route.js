@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { stripe, PLAN_PRICE_IDS } from '@/lib/stripe';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request) {
   try {
     const supabase = createClient();
