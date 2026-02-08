@@ -3,10 +3,16 @@ import { createClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
 
 // Webhook用のSupabaseクライアント（サービスロールキー使用）
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+// ビルド時はキーが未設定の場合があるため遅延初期化
+function getSupabaseAdmin() {
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error('SUPABASE_SERVICE_ROLE_KEY is not configured');
+  }
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+}
 
 export async function POST(request) {
   const body = await request.text();
@@ -77,7 +83,7 @@ async function handleCheckoutCompleted(session) {
   const stripeSubscription = await stripe.subscriptions.retrieve(session.subscription);
 
   // 購読レコードを作成
-  const { data: subscription, error } = await supabaseAdmin
+  const { data: subscription, error } = await getSupabaseAdmin()
     .from('subscriptions')
     .insert({
       user_id,
@@ -99,7 +105,7 @@ async function handleCheckoutCompleted(session) {
 
   // 工房の優先表示フラグを更新
   if (factory_id) {
-    await supabaseAdmin
+    await getSupabaseAdmin()
       .from('factories')
       .update({
         subscription_id: subscription.id,
@@ -110,14 +116,14 @@ async function handleCheckoutCompleted(session) {
   }
 
   // プレミアムプランの場合、Webサイト申込レコードを作成
-  const { data: plan } = await supabaseAdmin
+  const { data: plan } = await getSupabaseAdmin()
     .from('subscription_plans')
     .select('is_premium')
     .eq('id', parseInt(plan_id))
     .single();
 
   if (plan?.is_premium && factory_id) {
-    await supabaseAdmin
+    await getSupabaseAdmin()
       .from('website_requests')
       .insert({
         subscription_id: subscription.id,
@@ -135,7 +141,7 @@ async function handleInvoicePaid(invoice) {
   const stripeSubscription = await stripe.subscriptions.retrieve(subscriptionId);
 
   // 購読情報を更新
-  await supabaseAdmin
+  await getSupabaseAdmin()
     .from('subscriptions')
     .update({
       status: 'active',
@@ -146,14 +152,14 @@ async function handleInvoicePaid(invoice) {
     .eq('stripe_subscription_id', subscriptionId);
 
   // 工房の優先表示期限を更新
-  const { data: sub } = await supabaseAdmin
+  const { data: sub } = await getSupabaseAdmin()
     .from('subscriptions')
     .select('factory_id')
     .eq('stripe_subscription_id', subscriptionId)
     .single();
 
   if (sub?.factory_id) {
-    await supabaseAdmin
+    await getSupabaseAdmin()
       .from('factories')
       .update({
         is_priority: true,
@@ -168,7 +174,7 @@ async function handlePaymentFailed(invoice) {
 
   if (!subscriptionId) return;
 
-  await supabaseAdmin
+  await getSupabaseAdmin()
     .from('subscriptions')
     .update({
       status: 'past_due',
@@ -183,7 +189,7 @@ async function handleSubscriptionUpdated(subscription) {
     : subscription.status === 'canceled' ? 'canceled'
     : 'expired';
 
-  await supabaseAdmin
+  await getSupabaseAdmin()
     .from('subscriptions')
     .update({
       status,
@@ -196,7 +202,7 @@ async function handleSubscriptionUpdated(subscription) {
 
 async function handleSubscriptionDeleted(subscription) {
   // 購読をキャンセル状態に更新
-  const { data: sub } = await supabaseAdmin
+  const { data: sub } = await getSupabaseAdmin()
     .from('subscriptions')
     .update({
       status: 'canceled',
@@ -209,7 +215,7 @@ async function handleSubscriptionDeleted(subscription) {
 
   // 工房の優先表示を解除
   if (sub?.factory_id) {
-    await supabaseAdmin
+    await getSupabaseAdmin()
       .from('factories')
       .update({
         is_priority: false,

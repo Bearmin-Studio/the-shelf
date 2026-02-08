@@ -1,8 +1,16 @@
 import Stripe from 'stripe';
 
-// サーバーサイドのStripeクライアント
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2023-10-16',
+// サーバーサイドのStripeクライアント（ビルド時はキーが未設定の場合があるため遅延初期化）
+let _stripe;
+export const stripe = new Proxy({}, {
+  get(_, prop) {
+    if (!_stripe) {
+      _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+        apiVersion: '2023-10-16',
+      });
+    }
+    return _stripe[prop];
+  },
 });
 
 // プランのStripe Price IDマッピング（Stripeダッシュボードで作成後に設定）
