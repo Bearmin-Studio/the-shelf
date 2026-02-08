@@ -17,7 +17,7 @@ export const metadata = {
     locale: 'ja_JP',
     url: siteUrl,
     siteName,
-    title: `${siteName} - 挑戦者たちのショーケース`,
+    title: `${siteName}`,
     description: siteDescription,
     images: [
       {
@@ -30,7 +30,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteName} - 挑戦者たちのショーケース`,
+    title: `${siteName}`,
     description: siteDescription,
     images: ['/images/logo.png'],
   },
@@ -38,6 +38,7 @@ export const metadata = {
     icon: '/favicon.ico',
     apple: '/images/logo.png',
   },
+  applicationName: siteName,
   robots: {
     index: true,
     follow: true,
@@ -79,7 +80,7 @@ const jsonLd = {
       '@type': 'WebPage',
       '@id': `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: `${siteName} - 挑戦者たちのショーケース`,
+      name: `${siteName}`,
       description: siteDescription,
       isPartOf: { '@id': `${siteUrl}/#website` },
       about: { '@id': `${siteUrl}/#organization` },
