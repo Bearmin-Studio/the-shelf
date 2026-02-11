@@ -255,7 +255,7 @@ export default function Home() {
         likedCount={likedFactories.length}
         genresMap={genresMapRef.current}
       />
-        <div className="max-w-[1200px] mx-auto px-6 py-20">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
           <ErrorDisplay message={error} onRetry={loadData} />
         </div>
       </>
@@ -276,7 +276,7 @@ export default function Home() {
 
       {/* Featured */}
       {(loading || dbFeatured) && (
-        <section className="py-8 max-w-[1200px] mx-auto px-6" id="featured">
+        <section className="py-6 sm:py-8 max-w-[1200px] mx-auto px-4 sm:px-6" id="featured">
           <div className="flex items-baseline justify-between mb-5">
             <h2 className="text-xl font-bold flex items-center gap-2.5" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
               <span className="w-2 h-2 rounded-full bg-[var(--accent)] inline-block" /> 今月の注目工房
@@ -299,7 +299,7 @@ export default function Home() {
       />
 
       {/* Factory List */}
-      <section className="py-10 max-w-[1200px] mx-auto px-6" id="factories">
+      <section className="py-8 sm:py-10 max-w-[1200px] mx-auto px-4 sm:px-6" id="factories">
         <div className="flex items-baseline justify-between mb-5">
           <h2 className="text-xl font-bold flex items-center gap-2.5" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
             <span className="w-2 h-2 rounded-full bg-[var(--accent)] inline-block" /> 工房一覧
@@ -353,13 +353,13 @@ export default function Home() {
 
       {/* CTA */}
       {!myFactory && (
-        <section className="py-10 max-w-[1200px] mx-auto px-6">
-          <div className="text-center py-8 px-6 bg-white border border-[var(--border)] rounded-3xl relative overflow-hidden">
+        <section className="py-8 sm:py-10 max-w-[1200px] mx-auto px-4 sm:px-6">
+          <div className="text-center py-8 px-5 sm:px-6 bg-white border border-[var(--border)] rounded-3xl relative overflow-hidden">
             <div className="absolute top-[-50%] right-[-20%] w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(232,97,58,0.06)_0%,transparent_70%)] pointer-events-none" />
-            <h2 className="text-xl sm:text-[1.5rem] font-bold leading-relaxed mb-4 relative" style={{ fontFamily: "'Shippori Mincho',serif" }}>
+            <h2 className="text-lg sm:text-[1.5rem] font-bold leading-relaxed mb-3 sm:mb-4 relative" style={{ fontFamily: "'Shippori Mincho',serif" }}>
               あなたの作品を、<br />棚に並べませんか？
             </h2>
-            <p className="text-sm text-[var(--text-secondary)] mb-6 relative">登録は無料、花を咲かせる準備をしよう。</p>
+            <p className="text-[13px] sm:text-sm text-[var(--text-secondary)] mb-5 sm:mb-6 relative">登録は無料、花を咲かせる準備をしよう。</p>
             <button onClick={handleRegisterClick}
               className="px-8 py-3 rounded-full bg-[var(--accent)] text-white text-sm font-semibold hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 transition-all shadow-md relative">
               工房を出す
@@ -369,17 +369,17 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-[var(--border)] py-8">
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+      <footer className="border-t border-[var(--border)] py-6 sm:py-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row sm:flex-wrap sm:justify-between items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-2">
             <img src="/images/logo.png" alt="The Shelf" className="h-6 w-auto" />
             <span className="text-[13px] font-bold">The Shelf</span>
           </div>
-          <div className="flex gap-5 text-xs text-[var(--text-tertiary)]">
-            <Link href="/pricing" className="hover:text-[var(--text-primary)] transition-colors">料金プラン</Link>
-            <Link href="/terms" className="hover:text-[var(--text-primary)] transition-colors">利用規約</Link>
-            <Link href="/privacy" className="hover:text-[var(--text-primary)] transition-colors">プライバシーポリシー</Link>
-            <Link href="/contact" className="hover:text-[var(--text-primary)] transition-colors">お問い合わせ</Link>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 sm:gap-5 text-[11px] sm:text-xs text-[var(--text-tertiary)]">
+            <Link href="/pricing" className="hover:text-[var(--text-primary)] transition-colors whitespace-nowrap">料金プラン</Link>
+            <Link href="/terms" className="hover:text-[var(--text-primary)] transition-colors whitespace-nowrap">利用規約</Link>
+            <Link href="/privacy" className="hover:text-[var(--text-primary)] transition-colors whitespace-nowrap">プライバシーポリシー</Link>
+            <Link href="/contact" className="hover:text-[var(--text-primary)] transition-colors whitespace-nowrap">お問い合わせ</Link>
           </div>
           <p className="text-[11px] text-[var(--text-tertiary)]/60">© 2026 The Shelf</p>
         </div>

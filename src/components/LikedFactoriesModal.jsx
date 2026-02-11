@@ -10,12 +10,12 @@ const Icons = {
 
 export default function LikedFactoriesModal({ factories, onClose, onSelect }) {
   return (
-    <div className="fixed inset-0 z-[200] flex items-start justify-center p-8 overflow-y-auto" onClick={onClose}>
+    <div className="fixed inset-0 z-[200] flex items-start justify-center p-2 sm:p-8 overflow-y-auto" onClick={onClose}>
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-      <div className="relative w-full max-w-[680px] bg-white rounded-3xl shadow-2xl overflow-hidden my-8"
+      <div className="relative w-full max-w-[680px] bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden my-2 sm:my-8"
         onClick={e => e.stopPropagation()}>
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-white border-b border-[var(--border)] px-6 py-4 flex items-center justify-between">
+        <div className="sticky top-0 z-10 bg-white border-b border-[var(--border)] px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <h2 className="text-lg font-bold flex items-center gap-2" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-pink-500">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -29,7 +29,7 @@ export default function LikedFactoriesModal({ factories, onClose, onSelect }) {
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {factories.length === 0 ? (
             <div className="text-center py-12">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" strokeWidth="2" strokeLinecap="round" className="mx-auto mb-4 opacity-40">

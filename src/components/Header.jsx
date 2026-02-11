@@ -68,12 +68,12 @@ export default function Header({ onRegister, onSearch, myFactory, onShowLiked, l
   return (
     <header className={`sticky top-0 z-50 backdrop-blur-xl border-b transition-shadow ${scrolled ? 'shadow-sm' : ''}`}
       style={{ background: 'rgba(250,250,247,0.92)', borderColor: 'var(--border)' }}>
-      <div className="max-w-[1200px] mx-auto px-6 h-[60px] flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5">
-          <img src="/images/logo.png" alt="The Shelf" className="h-8 w-auto" />
-          <span className="font-bold text-base tracking-tight" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>The Shelf</span>
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-[56px] sm:h-[60px] flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <img src="/images/logo.png" alt="The Shelf" className="h-7 sm:h-8 w-auto" />
+          <span className="font-bold text-[15px] sm:text-base tracking-tight" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>The Shelf</span>
         </a>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Search */}
           <div ref={searchRef} className="relative hidden sm:block">
             <div className="flex items-center gap-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-full px-3.5 py-1.5 focus-within:border-[var(--accent)] focus-within:bg-white focus-within:shadow-[0_0_0_3px_var(--accent-subtle)] transition-all">
@@ -135,11 +135,11 @@ export default function Header({ onRegister, onSearch, myFactory, onShowLiked, l
           {authLoading ? (
             <div className="w-24 h-9 bg-gray-100 rounded-full animate-pulse" />
           ) : user ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               {/* いいね済みボタン */}
               <button
                 onClick={onShowLiked}
-                className="px-4 py-2 rounded-full border border-[var(--border)] text-[13px] font-medium text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all flex items-center gap-1.5"
+                className="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[var(--border)] text-[13px] font-medium text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all flex items-center gap-1.5"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-pink-500">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -149,12 +149,12 @@ export default function Header({ onRegister, onSearch, myFactory, onShowLiked, l
               {myFactory ? (
                 <button
                   onClick={() => onSearch?.(myFactory)}
-                  className="px-4 py-2 rounded-full border border-[var(--border)] text-[13px] font-medium text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[var(--border)] text-[12px] sm:text-[13px] font-medium text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all whitespace-nowrap"
                 >
                   マイ工房
                 </button>
               ) : (
-                <button onClick={onRegister} className="px-5 py-2 rounded-full bg-[var(--accent)] text-white text-[13px] font-semibold hover:bg-[var(--accent-hover)] hover:-translate-y-px transition-all shadow-md">
+                <button onClick={onRegister} className="px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[var(--accent)] text-white text-[12px] sm:text-[13px] font-semibold hover:bg-[var(--accent-hover)] hover:-translate-y-px transition-all shadow-md whitespace-nowrap">
                   工房を出す
                 </button>
               )}
@@ -210,7 +210,7 @@ export default function Header({ onRegister, onSearch, myFactory, onShowLiked, l
               </div>
             </div>
           ) : (
-            <button onClick={onRegister} className="px-5 py-2 rounded-full bg-[var(--accent)] text-white text-[13px] font-semibold hover:bg-[var(--accent-hover)] hover:-translate-y-px transition-all shadow-md">
+            <button onClick={onRegister} className="px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[var(--accent)] text-white text-[12px] sm:text-[13px] font-semibold hover:bg-[var(--accent-hover)] hover:-translate-y-px transition-all shadow-md whitespace-nowrap">
               工房を出す
             </button>
           )}

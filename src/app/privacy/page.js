@@ -7,20 +7,20 @@ export default function PrivacyPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 backdrop-blur-xl border-b"
         style={{ background: 'rgba(250,250,247,0.92)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[800px] mx-auto px-6 h-[60px] flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <img src="/images/logo.png" alt="The Shelf" className="h-8 w-auto" />
-            <span className="font-bold text-base tracking-tight" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>The Shelf</span>
+        <div className="max-w-[800px] mx-auto px-4 sm:px-6 h-[56px] sm:h-[60px] flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5">
+            <img src="/images/logo.png" alt="The Shelf" className="h-7 sm:h-8 w-auto" />
+            <span className="font-bold text-[15px] sm:text-base tracking-tight" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>The Shelf</span>
           </Link>
-          <Link href="/" className="text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)]">
+          <Link href="/" className="text-[13px] sm:text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)] whitespace-nowrap">
             ← トップに戻る
           </Link>
         </div>
       </header>
 
       {/* Content */}
-      <main className="max-w-[800px] mx-auto px-6 py-12">
-        <h1 className="text-3xl font-bold mb-8" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
+      <main className="max-w-[800px] mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
           プライバシーポリシー
         </h1>
 

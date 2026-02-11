@@ -309,27 +309,27 @@ export default function FactoryFormModal({ onClose, onSuccess, factory }) {
       : true; // step 3 (gallery) は任意
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-2 sm:p-4" onClick={onClose}>
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
       <div
-        className="relative w-full max-w-[640px] bg-white rounded-3xl shadow-2xl max-h-[90vh] overflow-hidden flex flex-col"
+        className="relative w-full max-w-[640px] bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-h-[92vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
         onClick={e => e.stopPropagation()}
         style={{ animation: 'fadeInUp 0.35s ease' }}
       >
         {/* Header */}
-        <div className="p-8 pb-0">
-          <button onClick={onClose} className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--text-primary)] rounded-full hover:bg-gray-100 transition-colors">
+        <div className="p-4 sm:p-8 pb-0 sm:pb-0">
+          <button onClick={onClose} className="absolute top-3 right-3 sm:top-5 sm:right-5 w-9 h-9 flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--text-primary)] rounded-full hover:bg-gray-100 transition-colors">
             <CloseIcon />
           </button>
-          <h2 className="text-[24px] font-bold mb-2" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
+          <h2 className="text-[20px] sm:text-[24px] font-bold mb-1.5 sm:mb-2" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
             {isEditMode ? '工房を編集' : '工房を出す'}
           </h2>
-          <p className="text-sm text-[var(--text-tertiary)] mb-5">
+          <p className="text-[13px] sm:text-sm text-[var(--text-tertiary)] mb-4 sm:mb-5">
             {isEditMode ? '工房の情報を更新します' : 'あなたの挑戦を棚に並べよう'}
           </p>
 
           {/* Progress */}
-          <div className="flex gap-2 mb-5">
+          <div className="flex gap-2 mb-4 sm:mb-5">
             {Array.from({ length: totalSteps }, (_, i) => i + 1).map(s => (
               <div
                 key={s}
@@ -340,7 +340,7 @@ export default function FactoryFormModal({ onClose, onSuccess, factory }) {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto px-8 pb-8">
+        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto px-4 sm:px-8 pb-4 sm:pb-8">
           {error && (
             <div className="mb-4 p-3 rounded-lg bg-red-50 text-red-600 text-sm">
               {error}
@@ -562,36 +562,38 @@ export default function FactoryFormModal({ onClose, onSuccess, factory }) {
                 <label className="block text-xs font-semibold text-[var(--text-secondary)] mb-1.5">
                   SNSリンク（最大5つ）
                 </label>
-                <div className="flex gap-2 mb-2">
-                  <select
-                    value={snsInput.platform}
-                    onChange={e => setSnsInput(prev => ({ ...prev, platform: e.target.value }))}
-                    className="px-3 py-2.5 rounded-xl border border-[var(--border)] text-sm bg-white"
-                  >
-                    <option value="">選択</option>
-                    <option value="Twitter">Twitter/X</option>
-                    <option value="Instagram">Instagram</option>
-                    <option value="YouTube">YouTube</option>
-                    <option value="TikTok">TikTok</option>
-                    <option value="Pixiv">Pixiv</option>
-                    <option value="Website">Website</option>
-                    <option value="Other">その他</option>
-                  </select>
+                <div className="flex flex-col sm:flex-row gap-2 mb-2">
+                  <div className="flex gap-2 sm:contents">
+                    <select
+                      value={snsInput.platform}
+                      onChange={e => setSnsInput(prev => ({ ...prev, platform: e.target.value }))}
+                      className="px-3 py-2.5 rounded-xl border border-[var(--border)] text-sm bg-white flex-1 sm:flex-none"
+                    >
+                      <option value="">選択</option>
+                      <option value="Twitter">Twitter/X</option>
+                      <option value="Instagram">Instagram</option>
+                      <option value="YouTube">YouTube</option>
+                      <option value="TikTok">TikTok</option>
+                      <option value="Pixiv">Pixiv</option>
+                      <option value="Website">Website</option>
+                      <option value="Other">その他</option>
+                    </select>
+                    <button
+                      type="button"
+                      onClick={handleAddSns}
+                      disabled={!snsInput.platform || !snsInput.url || formData.sns_links.length >= 5}
+                      className="px-4 py-2.5 rounded-xl bg-[var(--accent)] text-white text-sm font-medium disabled:opacity-50 whitespace-nowrap sm:order-last"
+                    >
+                      追加
+                    </button>
+                  </div>
                   <input
                     type="url"
                     value={snsInput.url}
                     onChange={e => setSnsInput(prev => ({ ...prev, url: e.target.value }))}
                     placeholder="https://..."
-                    className="flex-1 px-4 py-2.5 rounded-xl border border-[var(--border)] text-sm"
+                    className="flex-1 px-4 py-2.5 rounded-xl border border-[var(--border)] text-sm min-w-0"
                   />
-                  <button
-                    type="button"
-                    onClick={handleAddSns}
-                    disabled={!snsInput.platform || !snsInput.url || formData.sns_links.length >= 5}
-                    className="px-4 py-2.5 rounded-xl bg-[var(--accent)] text-white text-sm font-medium disabled:opacity-50"
-                  >
-                    追加
-                  </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {formData.sns_links.map((s, i) => (
@@ -697,7 +699,7 @@ export default function FactoryFormModal({ onClose, onSuccess, factory }) {
         </form>
 
         {/* Footer */}
-        <div className="p-8 pt-0">
+        <div className="p-4 sm:p-8 pt-0 sm:pt-0">
           {/* Delete button - edit mode only */}
           {isEditMode && step === 1 && (
             <div className="mb-4 pt-4 border-t border-[var(--border)]">

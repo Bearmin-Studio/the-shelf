@@ -2,7 +2,7 @@
 
 export default function LoadingSkeleton() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {[...Array(8)].map((_, i) => (
         <div key={i} className="bg-white border border-[var(--border)] rounded-2xl overflow-hidden animate-pulse">
           <div className="h-[180px] bg-gray-100" />

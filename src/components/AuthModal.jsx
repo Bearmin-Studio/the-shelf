@@ -19,14 +19,14 @@ export default function AuthModal({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-4" onClick={onClose}>
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-      <div className="relative w-full max-w-[440px] bg-white rounded-3xl p-10 shadow-2xl" onClick={e => e.stopPropagation()} style={{ animation: 'fadeInUp 0.35s ease' }}>
+      <div className="relative w-full max-w-[440px] bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl" onClick={e => e.stopPropagation()} style={{ animation: 'fadeInUp 0.35s ease' }}>
         <button onClick={onClose} className="absolute top-4 right-4 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] text-lg">✕</button>
-        <h2 className="text-[22px] font-bold mb-1.5" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
+        <h2 className="text-[20px] sm:text-[22px] font-bold mb-1.5" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
           ログイン
         </h2>
-        <p className="text-sm text-[var(--text-tertiary)] mb-6">
+        <p className="text-[13px] sm:text-sm text-[var(--text-tertiary)] mb-5 sm:mb-6">
           工房を出すにはログインが必要です
         </p>
 

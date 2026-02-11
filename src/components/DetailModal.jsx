@@ -102,9 +102,9 @@ export default function DetailModal({ factory, onClose, isOwner, onEdit, onLikeC
 
   if (!factory) return null;
   return (
-    <div className="fixed inset-0 z-[200] flex items-start justify-center p-4 sm:p-8 overflow-y-auto" onClick={onClose}>
+    <div className="fixed inset-0 z-[200] flex items-start justify-center p-2 sm:p-8 overflow-y-auto" onClick={onClose}>
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-      <div className="relative w-full max-w-[680px] bg-white rounded-3xl shadow-2xl overflow-hidden my-4 sm:my-8"
+      <div className="relative w-full max-w-[680px] bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden my-2 sm:my-8"
         onClick={e => e.stopPropagation()}
         style={{ animation: 'fadeInUp 0.35s ease' }}>
         <div className="relative h-[200px] sm:h-[260px] overflow-hidden flex-shrink-0"
@@ -132,34 +132,34 @@ export default function DetailModal({ factory, onClose, isOwner, onEdit, onLikeC
             </button>
           </div>
         </div>
-        <div className="p-6 sm:p-8 lg:p-10">
-          <div className="flex gap-2 mb-3 flex-wrap items-center">
+        <div className="p-4 sm:p-8 lg:p-10">
+          <div className="flex gap-1.5 sm:gap-2 mb-3 flex-wrap items-center">
             {/* 複数ジャンル対応 - normalizeFactoryで生成されたgenreNamesを使用 */}
             {Array.isArray(factory.genreNames) && factory.genreNames.length > 0 ? (
               factory.genreNames.map((name, idx) => (
-                <span key={idx} className="px-2.5 py-0.5 rounded-md bg-white border border-[var(--border)] text-[11px] font-semibold text-[var(--text-secondary)] flex-shrink-0">
+                <span key={idx} className="px-2 sm:px-2.5 py-0.5 rounded-md bg-white border border-[var(--border)] text-[10px] sm:text-[11px] font-semibold text-[var(--text-secondary)] flex-shrink-0">
                   {name}
                 </span>
               ))
             ) : (
-              <span className="px-2.5 py-0.5 rounded-md bg-white border border-[var(--border)] text-[11px] font-semibold text-[var(--text-secondary)] flex-shrink-0">
+              <span className="px-2 sm:px-2.5 py-0.5 rounded-md bg-white border border-[var(--border)] text-[10px] sm:text-[11px] font-semibold text-[var(--text-secondary)] flex-shrink-0">
                 {factory.genre}
               </span>
             )}
-            <span className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold inline-flex items-center gap-1.5 flex-shrink-0 ${factory.status === 'available' ? 'text-[var(--success)] bg-[rgba(45,159,111,0.08)]' : 'text-[var(--busy)] bg-[rgba(212,146,10,0.08)]'}`}>
+            <span className={`px-2 sm:px-2.5 py-0.5 rounded-md text-[10px] sm:text-[11px] font-semibold inline-flex items-center gap-1 sm:gap-1.5 flex-shrink-0 ${factory.status === 'available' ? 'text-[var(--success)] bg-[rgba(45,159,111,0.08)]' : 'text-[var(--busy)] bg-[rgba(212,146,10,0.08)]'}`}>
               <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${factory.status === 'available' ? 'bg-[var(--success)]' : 'bg-[var(--busy)]'}`} />
               {factory.status === 'available' ? '受付中' : '多忙'}
             </span>
-            <span className="px-2.5 py-0.5 rounded-md bg-gray-50 text-[11px] font-medium text-[var(--text-tertiary)] inline-flex items-center gap-1 flex-shrink-0">
+            <span className="px-2 sm:px-2.5 py-0.5 rounded-md bg-gray-50 text-[10px] sm:text-[11px] font-medium text-[var(--text-tertiary)] inline-flex items-center gap-1 flex-shrink-0">
               {Icons.eye}
               <span className="whitespace-nowrap">{factory.viewCount || 0} 回閲覧</span>
             </span>
-            <span className="px-2.5 py-0.5 rounded-md bg-gray-50 text-[11px] font-medium text-[var(--text-tertiary)] inline-flex items-center gap-1 flex-shrink-0">
+            <span className="px-2 sm:px-2.5 py-0.5 rounded-md bg-gray-50 text-[10px] sm:text-[11px] font-medium text-[var(--text-tertiary)] inline-flex items-center gap-1 flex-shrink-0">
               {Icons.heart}
               <span className="whitespace-nowrap">{likeCount} いいね</span>
             </span>
           </div>
-          <h2 className="text-[22px] sm:text-[26px] font-bold mb-1 break-words" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>{factory.name}</h2>
+          <h2 className="text-[20px] sm:text-[26px] font-bold mb-1 break-words" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>{factory.name}</h2>
           <div className="flex items-center gap-2 mb-3 flex-shrink-0">
             {factory.creatorAvatar ? (
               <img src={factory.creatorAvatar} alt={factory.creator} className="w-6 h-6 rounded-full object-cover border border-[var(--border)] flex-shrink-0" />
@@ -168,7 +168,7 @@ export default function DetailModal({ factory, onClose, isOwner, onEdit, onLikeC
             )}
             <p className="text-sm text-[var(--text-tertiary)] truncate">{factory.creator}</p>
           </div>
-          <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6 pb-6 border-b border-[var(--border)] break-words">{factory.tagline}</p>
+          <p className="text-[13px] sm:text-[15px] text-[var(--text-secondary)] leading-relaxed mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-[var(--border)] break-words">{factory.tagline}</p>
 
           {factory.gallery?.length > 0 ? (
             <div className="mb-6">
@@ -264,7 +264,7 @@ export default function DetailModal({ factory, onClose, isOwner, onEdit, onLikeC
             </div>
           )}
 
-          <div className="flex flex-col sm:flex-row gap-2.5 pt-5 border-t border-[var(--border)]">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-2.5 pt-4 sm:pt-5 border-t border-[var(--border)]">
             {isOwner ? (
               <button
                 onClick={onEdit}
@@ -338,12 +338,12 @@ export default function DetailModal({ factory, onClose, isOwner, onEdit, onLikeC
       {/* Contact Modal */}
       {showContactModal && (
         <div
-          className="fixed inset-0 z-[300] flex items-center justify-center p-4 sm:p-8"
+          className="fixed inset-0 z-[300] flex items-center justify-center p-3 sm:p-8"
           onClick={() => setShowContactModal(false)}
         >
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
           <div
-            className="relative bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md"
+            className="relative bg-white rounded-2xl shadow-2xl p-5 sm:p-6 w-full max-w-md"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4 gap-3">

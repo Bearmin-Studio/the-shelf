@@ -2,8 +2,8 @@
 
 export default function GenreBar({ active, onChange, genres }) {
   return (
-    <nav className="sticky top-[60px] z-40 backdrop-blur-xl border-b py-2.5" style={{ background: 'rgba(250,250,247,0.95)', borderColor: 'var(--border)' }}>
-      <div className="max-w-[1200px] mx-auto px-6 flex items-center gap-1.5 overflow-x-auto hide-scrollbar">
+    <nav className="sticky top-[56px] sm:top-[60px] z-40 backdrop-blur-xl border-b py-2 sm:py-2.5" style={{ background: 'rgba(250,250,247,0.95)', borderColor: 'var(--border)' }}>
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex items-center gap-1.5 overflow-x-auto hide-scrollbar">
         <span className="text-xs font-semibold text-[var(--text-tertiary)] whitespace-nowrap mr-1 flex-shrink-0">ジャンル</span>
         {[null, ...genres].map(g => {
           const genreName = typeof g === 'object' ? g?.name : g;

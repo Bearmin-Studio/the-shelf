@@ -3,8 +3,8 @@
 export default function FeaturedCard({ factory, onSelect }) {
   if (!factory) return null;
   return (
-    <button onClick={() => onSelect(factory)} className="w-full text-left grid grid-cols-1 md:grid-cols-2 bg-white border border-[var(--border)] rounded-3xl overflow-hidden hover:-translate-y-1.5 hover:shadow-[var(--shadow-card-hover)] transition-all duration-300 cursor-pointer min-h-[340px]">
-      <div className="relative overflow-hidden flex items-center justify-center min-h-[220px] md:min-h-full"
+    <button onClick={() => onSelect(factory)} className="w-full text-left grid grid-cols-1 md:grid-cols-2 bg-white border border-[var(--border)] rounded-3xl overflow-hidden hover:-translate-y-1.5 hover:shadow-[var(--shadow-card-hover)] transition-all duration-300 cursor-pointer min-h-0 sm:min-h-[340px]">
+      <div className="relative overflow-hidden flex items-center justify-center min-h-[180px] sm:min-h-[220px] md:min-h-full"
         style={{ background: !factory.coverImage ? `linear-gradient(135deg, ${factory.color}18, ${factory.color}08)` : undefined }}>
         {factory.coverImage ? (
           <img
@@ -21,9 +21,9 @@ export default function FeaturedCard({ factory, onSelect }) {
           </>
         )}
       </div>
-      <div className="p-8 md:p-10 flex flex-col justify-center">
-        <span className="text-[11px] font-semibold text-[var(--accent)] uppercase tracking-[0.08em] mb-3 flex items-center gap-1.5">✦ 今月の注目</span>
-        <h3 className="text-2xl font-bold mb-1" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>{factory.name}</h3>
+      <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center">
+        <span className="text-[11px] font-semibold text-[var(--accent)] uppercase tracking-[0.08em] mb-2 sm:mb-3 flex items-center gap-1.5">✦ 今月の注目</span>
+        <h3 className="text-xl sm:text-2xl font-bold mb-1" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>{factory.name}</h3>
         <div className="flex items-center gap-2 mb-3">
           {factory.creatorAvatar ? (
             <img src={factory.creatorAvatar} alt={factory.creator} className="w-6 h-6 rounded-full object-cover border border-[var(--border)]" />
@@ -32,8 +32,8 @@ export default function FeaturedCard({ factory, onSelect }) {
           )}
           <p className="text-[13px] text-[var(--text-tertiary)]">{factory.creator}</p>
         </div>
-        <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">{factory.tagline}</p>
-        <div className="flex flex-wrap gap-1.5 mb-5">
+        <p className="text-[13px] sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-3 sm:mb-4">{factory.tagline}</p>
+        <div className="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
           {/* 複数ジャンル対応 */}
           {Array.isArray(factory.genreNames) && factory.genreNames.length > 0 ? (
             factory.genreNames.map((name, idx) => (

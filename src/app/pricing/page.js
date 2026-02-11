@@ -179,12 +179,12 @@ function PricingContent() {
       {/* Header */}
       <header className="sticky top-0 z-50 backdrop-blur-xl border-b"
         style={{ background: 'rgba(250,250,247,0.92)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1200px] mx-auto px-6 h-[60px] flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <img src="/images/logo.png" alt="The Shelf" className="h-8 w-auto" />
-            <span className="font-bold text-base tracking-tight" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>The Shelf</span>
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-[56px] sm:h-[60px] flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5">
+            <img src="/images/logo.png" alt="The Shelf" className="h-7 sm:h-8 w-auto" />
+            <span className="font-bold text-[15px] sm:text-base tracking-tight" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>The Shelf</span>
           </Link>
-          <Link href="/" className="text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)]">
+          <Link href="/" className="text-[13px] sm:text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)] whitespace-nowrap">
             ← トップに戻る
           </Link>
         </div>
@@ -257,17 +257,17 @@ function PricingContent() {
       )} */}
 
       {/* Hero */}
-      <section className="py-12 px-6 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
-          あなたの挑戦を、もっと多くの人に届けよう
+      <section className="py-8 sm:py-12 px-4 sm:px-6 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
+          あなたの挑戦を、<br className="sm:hidden" />もっと多くの人に届けよう
         </h1>
-        <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
+        <p className="text-[13px] sm:text-base text-[var(--text-secondary)] max-w-xl mx-auto">
           優先表示プランで注目度アップ。<br />プレミアムプランで本格的な起業をサポートします。
         </p>
       </section>
 
       {/* Plans */}
-      <section className="max-w-[1000px] mx-auto px-6 pb-16">
+      <section className="max-w-[1000px] mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
         {isLoading ? (
           <div className="flex justify-center py-12">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--accent)]" />
@@ -362,27 +362,27 @@ function PricingContent() {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-[800px] mx-auto px-6 pb-16">
-        <h2 className="text-2xl font-bold text-center mb-8" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
+      <section className="max-w-[800px] mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+        <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
           よくある質問
         </h2>
 
         <div className="space-y-4">
-          <div className="bg-white rounded-xl border border-[var(--border)] p-5">
+          <div className="bg-white rounded-xl border border-[var(--border)] p-4 sm:p-5">
             <h3 className="font-semibold mb-2">いつでも解約できますか？</h3>
             <p className="text-sm text-[var(--text-secondary)]">
               はい、いつでも解約可能です。解約後も現在の請求期間の終了までサービスをご利用いただけます。
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-[var(--border)] p-5">
+          <div className="bg-white rounded-xl border border-[var(--border)] p-4 sm:p-5">
             <h3 className="font-semibold mb-2">支払い方法は何がありますか？</h3>
             <p className="text-sm text-[var(--text-secondary)]">
               クレジットカード（Visa、Mastercard、JCB、American Express）に対応しています。
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-[var(--border)] p-5">
+          <div className="bg-white rounded-xl border border-[var(--border)] p-4 sm:p-5">
             <h3 className="font-semibold mb-2">プレミアムプランのWebサイト制作はどのように進みますか？</h3>
             <p className="text-sm text-[var(--text-secondary)]">
               申し込み後、担当者からご連絡いたします。ヒアリングを行い、あなたの工房に合ったWebサイトを制作します。<br/>
@@ -390,7 +390,7 @@ function PricingContent() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-[var(--border)] p-5">
+          <div className="bg-white rounded-xl border border-[var(--border)] p-4 sm:p-5">
             <h3 className="font-semibold mb-2">プランのアップグレード・ダウングレードはできますか？</h3>
             <p className="text-sm text-[var(--text-secondary)]">
               はい、可能です。「購読の管理」からいつでも変更いただけます。

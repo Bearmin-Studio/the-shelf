@@ -50,7 +50,7 @@ export default function ContactPage() {
         {/* Header */}
         <header className="sticky top-0 z-50 backdrop-blur-xl border-b"
           style={{ background: 'rgba(250,250,247,0.92)', borderColor: 'var(--border)' }}>
-          <div className="max-w-[800px] mx-auto px-6 h-[60px] flex items-center justify-between">
+          <div className="max-w-[800px] mx-auto px-4 sm:px-6 h-[56px] sm:h-[60px] flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2.5">
               <img src="/images/logo.png" alt="The Shelf" className="h-8 w-auto" />
               <span className="font-bold text-base tracking-tight" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>The Shelf</span>
@@ -99,12 +99,12 @@ export default function ContactPage() {
       </header>
 
       {/* Content */}
-      <main className="max-w-[600px] mx-auto px-6 py-12">
-        <h1 className="text-3xl font-bold mb-3" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
+      <main className="max-w-[600px] mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3" style={{ fontFamily: "'DM Sans','Zen Kaku Gothic New',sans-serif" }}>
           お問い合わせ
         </h1>
-        <p className="text-[var(--text-secondary)] mb-8">
-          ご質問・ご要望がございましたら、下記フォームよりお気軽にお問い合わせください。
+        <p className="text-[13px] sm:text-base text-[var(--text-secondary)] mb-6 sm:mb-8">
+          ご質問・ご要望がございましたら、<br className="sm:hidden" />下記フォームよりお気軽にお問い合わせください。
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
