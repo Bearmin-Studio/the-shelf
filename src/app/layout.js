@@ -1,7 +1,7 @@
 import './globals.css'
 import { AuthProvider } from '@/hooks/useAuth'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://the-shelf.jp';
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://shelf.realpg.net';
 const siteName = 'The Shelf';
 const siteDescription = '起業前のクリエイターを展示するショーケースサイト。3D・映像・デザイン・Web制作・AI作品など、挑戦する工房と出会える場所。';
 
@@ -12,6 +12,9 @@ export const metadata = {
   },
   description: siteDescription,
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
