@@ -689,7 +689,7 @@ export default function FactoryFormModal({ onClose, onSuccess, factory }) {
                       className="w-full py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       <PlusIcon />
-                      {isAddingWork ? '追加中...' : '作品を追加'}
+                      {isAddingWork ? 'アップロード中...' : 'アップロード'}
                     </button>
                   </div>
                 </div>
